@@ -1,0 +1,6 @@
+http://engineroom.trackmaven.com/blog/getting-started-drf-angularjs-part-1/
+
+pip install djangorestframework -U
+pip install markdown       # Markdown support for the browsable API.
+pip install django-filter  # Filtering support
+
