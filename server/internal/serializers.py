@@ -1,8 +1,8 @@
 from rest_framework import serializers
-#from retail.models import Chain, Store, Employee
+#from internal.models import Chain, Store, Employee
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from retail.models import Snippet
+from internal.models import Snippet
 #, LANGUAGE_CHOICES, STYLE_CHOICES
 
 

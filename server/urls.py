@@ -1,7 +1,7 @@
-from retail.views import User
+from internal.views import User
 #ChainViewSet, StoreViewSet, EmployeeViewSet, User
 from django.conf.urls import url
-from retail import views
+from internal import views
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework import routers, serializers, viewsets

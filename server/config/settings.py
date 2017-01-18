@@ -46,7 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'retail',
+    'internal',
     'rest_framework',
     'rest_framework.authtoken',
     #'corsheaders',
@@ -70,7 +70,7 @@ ROOT_URLCONF = 'urls'
 TEMPLATES = [    
         {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',   
-        'DIRS': [os.path.join(BASE_DIR, 'retail.views')], 
+        'DIRS': [os.path.join(BASE_DIR, 'internal.views')], 
         # For those who wants to have a custom place for templates in their Django apps/projects.
         'APP_DIRS': True,
         'OPTIONS': {

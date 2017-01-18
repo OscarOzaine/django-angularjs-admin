@@ -1,9 +1,9 @@
 from rest_framework import viewsets
-#from retail.models import Chain, Store, Employee
-from retail.models import Snippet, RangeParameter
-from retail.permissions import IsOwnerOrReadOnly, MyUserPermissions
-#from retail.serializers import ChainSerializer, StoreSerializer, EmployeeSerializer, 
-from retail.serializers import UserSerializer, SnippetSerializer, RangeParameterSerializer
+#from internal.models import Chain, Store, Employee
+from internal.models import Snippet, RangeParameter
+from internal.permissions import IsOwnerOrReadOnly, MyUserPermissions
+#from internal.serializers import ChainSerializer, StoreSerializer, EmployeeSerializer, 
+from internal.serializers import UserSerializer, SnippetSerializer, RangeParameterSerializer
 from rest_framework import permissions
 from django.contrib.auth.models import User
 from rest_framework import generics
