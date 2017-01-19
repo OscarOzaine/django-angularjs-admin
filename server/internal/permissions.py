@@ -23,8 +23,11 @@ class MyUserPermissions(permissions.BasePermission):
     def has_permission(self, request, view):
         # Allow get requests for all
         if request.method == 'GET':
-            if 'obj' in globals():
-                return request.user == obj
+            #print 'user='
+            print request.user
+            #print obj
+            if str(request.user) != "AnonymousUser" and str(request.user) != "":
+                return True
                 
             return False
             #return request.user == obj

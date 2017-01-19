@@ -49,7 +49,7 @@ INSTALLED_APPS = (
     'internal',
     'rest_framework',
     'rest_framework.authtoken',
-    #'corsheaders',
+    'corsheaders',
     #'snippets.apps.SnippetsConfig',
 )
 
@@ -62,6 +62,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 )
 
 #ROOT_URLCONF = 'drf_sample.server.urls'
@@ -113,7 +114,7 @@ DATABASES = {
     }
 }
 
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
