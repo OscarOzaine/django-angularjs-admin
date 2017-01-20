@@ -1,5 +1,5 @@
 retail.controller('RetailController', function($scope, Chain, Store, Employee) {
-    Chain.query().$promise.then(function(data) {
+    /*Chain.query().$promise.then(function(data) {
     	console.log(data);
         $scope.chains = data;
     });
@@ -8,5 +8,5 @@ retail.controller('RetailController', function($scope, Chain, Store, Employee) {
     });
     Employee.query().$promise.then(function(data) {
         $scope.employees = data;
-    });
+    });*/
 });

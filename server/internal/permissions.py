@@ -8,11 +8,20 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         # Read permissions are allowed to any request,
         # so we'll always allow GET, HEAD or OPTIONS requests.
-        if request.method in permissions.SAFE_METHODS:
+        
+        if request.method in ALLOWED_METHODS:
             return True
 
         # Write permissions are only allowed to the owner of the snippet.
         return obj.owner == request.user
+
+
+class AllowAll(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return True
+
+    def has_object_permission(self, request, view, obj):
+        return True
 
 class MyUserPermissions(permissions.BasePermission):
     """
@@ -22,10 +31,18 @@ class MyUserPermissions(permissions.BasePermission):
     """
     def has_permission(self, request, view):
         # Allow get requests for all
-        if request.method == 'GET':
-            #print 'user='
-            print request.user
-            #print obj
+        
+        print request.data
+        print request.method
+        if 'obj' in globals():
+                return request.user == obj
+        if request.method in allowed:
+            print 'user='
+            print str(request.user)
+            print request.method
+            #print HttpResponse(escape(repr(request)))
+            #print request
+            return True
             if str(request.user) != "AnonymousUser" and str(request.user) != "":
                 return True
                 

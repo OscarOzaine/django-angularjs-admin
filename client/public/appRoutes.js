@@ -12,6 +12,12 @@ angular.module('appRoutes', ["ui.router"])
 			        controller: 'RetailController'
 			    })
 			    .state({
+			        name: 'internal',
+			        url: '/internal',
+			        templateUrl: 'public/components/retail/templates/internal.template.html',
+			        controller: 'InternalController'
+			    })
+			    .state({
 			        name: 'login',
 			        url: '/login',
 			        templateUrl: 'public/components/retail/templates/login.template.html',

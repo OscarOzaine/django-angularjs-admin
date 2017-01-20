@@ -68,7 +68,7 @@ Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort
     <!-- <span class="glyphicon glyphicon-list-alt"></span> -->
 	    <h2>Internal</h2>
 	    <div class="box" ng-controller="LoginController">
-	    	<form id="id_auth_form" class="navbar-form navbar-right" ng-submit="login()">
+	    	<form method="POST" id="id_auth_form" class="navbar-form navbar-right" ng-submit="login()">
 				<div class="form-group">
 					<input ng-model="username" required name="username" type="text" placeholder="username" class="form-control">
 				</div>

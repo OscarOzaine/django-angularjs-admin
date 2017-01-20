@@ -29,12 +29,18 @@ ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
-       'rest_framework.authentication.TokenAuthentication',
+       #'rest_framework.authentication.TokenAuthentication',
+       'rest_framework.permissions.IsAuthenticated',
    ),
-   'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAdminUser',
-        'rest_framework.permissions.IsAuthenticated',
-   ),
+   # 'DEFAULT_PERMISSION_CLASSES': (
+   #      'rest_framework.permissions.IsAdminUser',
+   #      'rest_framework.permissions.IsAuthenticated',
+   # ),
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
 }
 
 # Application definition
@@ -50,6 +56,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    #'debug_toolbar',
     #'snippets.apps.SnippetsConfig',
 )
 
@@ -63,7 +70,23 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
+
+# DEBUG_TOOLBAR_PANELS = [
+#     'debug_toolbar.panels.versions.VersionsPanel',
+#     'debug_toolbar.panels.timer.TimerPanel',
+#     'debug_toolbar.panels.settings.SettingsPanel',
+#     'debug_toolbar.panels.headers.HeadersPanel',
+#     'debug_toolbar.panels.request.RequestPanel',
+#     'debug_toolbar.panels.sql.SQLPanel',
+#     'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+#     'debug_toolbar.panels.templates.TemplatesPanel',
+#     'debug_toolbar.panels.cache.CachePanel',
+#     'debug_toolbar.panels.signals.SignalsPanel',
+#     'debug_toolbar.panels.logging.LoggingPanel',
+#     'debug_toolbar.panels.redirects.RedirectsPanel',
+# ]
 
 #ROOT_URLCONF = 'drf_sample.server.urls'
 #ROOT_URLCONF = 'server.urls'
@@ -129,8 +152,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+#DEBUG = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-
+ALLOWED_METHODS = ['POST', 'GET']
 STATIC_URL = '/static/'

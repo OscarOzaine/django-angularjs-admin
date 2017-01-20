@@ -6,7 +6,7 @@ angular.module('SampleApplication', [
     'appRoutes',
     'retail',
     'ngResource',
-    'base64'
+    'base64',
 ])
 .run(function($cookieStore, $rootScope, $http, $base64) {
 	/*

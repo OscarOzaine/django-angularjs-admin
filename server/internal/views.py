@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 #from internal.models import Chain, Store, Employee
 from internal.models import Snippet, RangeParameter
-from internal.permissions import IsOwnerOrReadOnly, MyUserPermissions
+from internal.permissions import IsOwnerOrReadOnly, MyUserPermissions, AllowAll
 #from internal.serializers import ChainSerializer, StoreSerializer, EmployeeSerializer, 
 from internal.serializers import UserSerializer, SnippetSerializer, RangeParameterSerializer
 from rest_framework import permissions
@@ -18,6 +18,29 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import mixins
 from rest_framework import generics
+from django.contrib.auth import authenticate
+import json
+
+class AuthLogin(generics.ListAPIView):
+    permission_classes = (AllowAll,)
+
+    queryset = User.objects.none()
+    serializer_class = UserSerializer
+
+    def post(self, request, format=None):
+        username = request.POST.get("username", False)
+        password = request.POST.get("password", False)
+
+        print request.POST
+        user = authenticate(username=username, password=password)
+        #print user
+
+        if user is not None:
+            return Response(UserSerializer(request.user).data)
+        else:
+            return Response("-1")
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserList(generics.ListAPIView):
 	permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
@@ -63,9 +86,9 @@ class RangeParameterDetail(generics.RetrieveUpdateDestroyAPIView):
     
 #     def perform_create(self, serializer):
 #         serializer.save(owner = self.request.user)
-
+#@require_http_methods(["GET", "POST"])
 class SnippetList(generics.ListCreateAPIView):
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    #authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (MyUserPermissions, )
     print 'test'
     queryset = Snippet.objects.all()
