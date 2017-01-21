@@ -31,28 +31,11 @@ class MyUserPermissions(permissions.BasePermission):
     """
     def has_permission(self, request, view):
         # Allow get requests for all
-        
-        print request.data
-        print request.method
-        if 'obj' in globals():
-                return request.user == obj
-        if request.method in allowed:
-            print 'user='
-            print str(request.user)
-            print request.method
-            #print HttpResponse(escape(repr(request)))
-            #print request
+        print request.user
+        if str(request.user) != "AnonymousUser" and str(request.user) != "" and request.user:
             return True
-            if str(request.user) != "AnonymousUser" and str(request.user) != "":
-                return True
-                
-            return False
-            #return request.user == obj
-        else:
-            if 'obj' in globals():
-                return request.user == obj
-
-            return False
+        
+        return False
 
     def has_object_permission(self, request, view, obj):
         """

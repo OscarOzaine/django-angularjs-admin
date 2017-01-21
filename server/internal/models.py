@@ -13,19 +13,19 @@ class RangeParameter(models.Model):
     id = models.IntegerField(primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     gpio = models.CharField(max_length=255, blank=True, default='')
-    max = models.FloatField()
-    max_value = models.FloatField()
+    max = models.TextField()
+    max_value = models.TextField()
     #min = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE)
-    min = models.FloatField()
-    min_value = models.FloatField()
+    min = models.TextField()
+    min_value = models.TextField()
     range_id = models.IntegerField()
     sensor_id = models.IntegerField()
-
-    #owner = models.ForeignKey('auth.User', related_name='rangeparameters', on_delete=models.CASCADE)
+    
+    owner = models.ForeignKey('auth.User', related_name='rangeparameters', on_delete=models.CASCADE)
     highlighted = models.TextField()
 
     class Meta:
-        #'owner',
+        'owner',
         ordering = ( 'created',)
 
 

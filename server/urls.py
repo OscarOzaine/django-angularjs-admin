@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^snippets/(?P<pk>[0-9]+)$', views.SnippetDetail.as_view()),
     url(r'^users/$', views.UserList.as_view()),
 	url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
+	url(r'^range-parameter/$', views.RangeParameterList.as_view()),
 	url(r'^login/$', views.AuthLogin.as_view()),
 	url(r'^api-token-auth/', obtain_jwt_token),
     #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

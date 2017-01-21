@@ -48,11 +48,15 @@ Temporary Items
 
 client/bower_components/*
 client/node_modules/*
+client/public/components/dist/*
+client/public/components/vendor/*
+
 server/bower_components/*
 server/db.sqlite3
 server/env/*
 server/urls.pyc
-server/retail/_init_.pyc
+server/internal/_init_.pyc
 *.pyc
-server/retail/migrations/*
+server/internal/migrations/*
 .DONOTREAD
+

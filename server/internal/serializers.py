@@ -2,7 +2,7 @@ from rest_framework import serializers
 #from internal.models import Chain, Store, Employee
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from internal.models import Snippet
+from internal.models import Snippet, RangeParameter
 #, LANGUAGE_CHOICES, STYLE_CHOICES
 
 
@@ -16,10 +16,10 @@ class UserSerializer(serializers.ModelSerializer):
 class RangeParameterSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     gpio = serializers.CharField(required=False, allow_blank=True, max_length=255)
-    max = serializers.FloatField(required=False)
-    max_value = serializers.FloatField(required=False)
-    min = serializers.FloatField(required=False)
-    min_value = serializers.FloatField(required=False)
+    max = serializers.CharField(required=False)
+    max_value = serializers.CharField(required=False)
+    min = serializers.CharField(required=False)
+    min_value = serializers.CharField(required=False)
     range_id = serializers.IntegerField(required=False)
     sensor_id = serializers.IntegerField(required=False)
     
@@ -55,6 +55,10 @@ class RangeParameterSerializer(serializers.Serializer):
         instance.sensor_id = validated_data.get('sensor_id', instance.sensor_id)
         instance.save()
         return instance
+
+    class Meta:
+        model = RangeParameter
+        fields = ('id', 'owner_id')
 
 
 class SnippetSerializer(serializers.Serializer):

@@ -2,8 +2,9 @@ angular.module('appRoutes', ["ui.router"])
 	.config([
 		'$stateProvider', 
 		'$urlRouterProvider', 
-		function($stateProvider, $urlRouterProvider) {
-
+		'$qProvider', 
+		function($stateProvider, $urlRouterProvider, $qProvider) {
+			$qProvider.errorOnUnhandledRejections(false);
 		    $stateProvider
 		    	.state({
 			        name: 'retail',
