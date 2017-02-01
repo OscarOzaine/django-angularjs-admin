@@ -1,0 +1,79 @@
+<div id="page-wrapper">
+
+    <div class="row" ng-controller="InternalController">
+        <div class="col-lg-12">
+            <h1 class="page-header">Hello {{ user }}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Sensors
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                Add Sensor
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>GPIO</th>
+                                            <th>Max</th>
+                                            <th>Max Value</th>
+                                            <th>Min</th>
+                                            <th>Min Value</th>
+                                            <th>Range ID</th>
+                                            <th>Sensor ID</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng:repeat="sensor in sensors">
+                                            <td>{{ sensor.id }}</td>
+                                            <td>{{ sensor.gpio }}</td>
+                                            <td>{{ sensor.max }}</td>
+                                            <td>{{ sensor.max_value }}</td>
+                                            <td>{{ sensor.min }}</td>
+                                            <td>{{ sensor.min_value }}</td>
+                                            <td>{{ sensor.range_id }}</td>
+                                            <td>{{ sensor.sensor_id }}</td>
+                                            <td>
+                                                <a href="/#!/internal/sensors/{{ sensor.id }}">
+                                                    Edit
+                                                </a>
+                                                | 
+                                                <a ng-click="delete(sensor)">
+                                                    Delete
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+  
+</div>
+

@@ -6,26 +6,32 @@ angular.module('appRoutes', ["ui.router"])
 		function($stateProvider, $urlRouterProvider, $qProvider) {
 			$qProvider.errorOnUnhandledRejections(false);
 		    $stateProvider
-		    	.state({
-			        name: 'retail',
-			        url: '/',
-			        templateUrl: 'public/components/retail/templates/retail.template.html',
-			        controller: 'RetailController'
-			    })
 			    .state({
 			        name: 'internal',
 			        url: '/internal',
-			        templateUrl: 'public/components/retail/templates/internal.template.html',
+			        templateUrl: 'public/components/internal/templates/internal.template.html',
 			        controller: 'InternalController'
+			    })
+			    .state({
+			        name: 'sensors',
+			        url: '/sensors',
+			        templateUrl: 'public/components/internal/templates/sensors.template.html',
+			        controller: 'SensorController'
+			    })
+			    .state({
+			        name: 'sensors_view',
+			        url: '/sensors/:id',
+			        templateUrl: 'public/components/internal/templates/sensors/view.html',
+			        controller: 'SensorViewController'
 			    })
 			    .state({
 			        name: 'login',
 			        url: '/login',
-			        templateUrl: 'public/components/retail/templates/login.template.html',
+			        templateUrl: 'public/components/internal/templates/login.template.html',
 			        controller: 'LoginController'
 			    })
 			    ;
 
-		    $urlRouterProvider.otherwise('/');
+		    $urlRouterProvider.otherwise('/login');
 		}
 ]);

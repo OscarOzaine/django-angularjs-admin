@@ -1,6 +1,6 @@
 {
-  "name": "drf-sample-client",
-  "description": "A sample Angular application",
+  "name": "internal-webapp",
+  "description": "A simple Angular application",
   "dependencies": {
     "angular": "^1.5.7",
     "angular-ui-router": "^0.3.1",
